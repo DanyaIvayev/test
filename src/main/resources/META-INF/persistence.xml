@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+        xmlns="http://java.sun.com/xml/ns/persistence"
+        version="2.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+    <persistence-unit name="persistenceUnit">
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+        <class>model.BranchEntity</class>
+        <class>model.BranchProviderEntity</class>
+        <class>model.EmployerEntity</class>
+        <class>model.MedicineEntity</class>
+        <class>model.PositionEntity</class>
+        <class>model.ProviderEntity</class>
+        <class>model.SalesEntity</class>
+        <class>model.TypeofmedicineEntity</class>
+        <!--<class>model.SalesEntityPK</class>-->
+        <!--<class>model.BranchProviderEntityPK</class>-->
+        <validation-mode>NONE</validation-mode>
+        <properties>
+            <property name="openjpa.RuntimeUnenhancedClasses" value="warn"/>
+            <!--<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>-->
+            <!--<property name="openjpa.Log" value="DefaultLevel=ERROR, Tool=ERROR"/>-->
+            <!--<property name="openjpa.jdbc.UpdateManager" value="operation-order"/>-->
+            <property name="openjpa.MetaDataRepository" value="Preload=true" />
+            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/pharmacy"/>
+            <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
+            <property name="openjpa.ConnectionUserName" value="postgres"/>
+            <property name="openjpa.ConnectionPassword" value="scorpion"/>
+            <property name="openjpa.jdbc.Schema" value="public"/>
+        </properties>
+    </persistence-unit>
+</persistence>

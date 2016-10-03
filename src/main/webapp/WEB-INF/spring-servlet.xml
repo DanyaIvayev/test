@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        <context:component-scan base-package="test"/>
+    <!-- Make sure the following is specified to enable transaction  -->
+    <mvc:annotation-driven />
+
+    <tx:annotation-driven />
+    <!--<bean id="multipartResolver"-->
+          <!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />-->
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager"
+          id="transactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <bean id="openJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="true"/>
+        <property name="databasePlatform" value="org.apache.openjpa.jdbc.sql.PostgresDictionary"/>
+    </bean>
+    <!--&lt;!&ndash;  This defines the entity manager factory with some custom properties &ndash;&gt;-->
+    <bean id='entityManagerFactory'
+          class='org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean'>
+        <property name="persistenceUnitName" value="persistenceUnit"/>
+        <property name='dataSource' ref='dataSource' />
+        <property name="jpaVendorAdapter" ref="openJpaVendorAdapter" />
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="eclipselink.weaving" value="false"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--&lt;!&ndash; This defines the hsqldb data source &ndash;&gt;-->
+    <bean id='dataSource'
+          class='org.springframework.jdbc.datasource.DriverManagerDataSource'>
+        <property name='driverClassName' value='org.postgresql.Driver' />
+        <property name='url' value='jdbc:postgresql://localhost:5432/pharmacy' />
+        <property name='username' value='postgres' />
+        <property name='password' value='scorpion' />
+    </bean>
+    <!--<bean name="/index.htm"-->
+          <!--class="test.App" />-->
+    <!--<bean name="/displayBranches.htm" class="test.DisplayBranches"/>-->
+
+    <!--<bean id="viewResolver"-->
+          <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver" >-->
+        <!--<property name="prefix">-->
+            <!--<value>/WEB-INF/pages/</value>-->
+        <!--</property>-->
+        <!--<property name="suffix">-->
+            <!--<value>.jsp</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+</beans>
