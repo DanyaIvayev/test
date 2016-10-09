@@ -15,6 +15,11 @@ public class TypeofmedicineEntity {
     public TypeofmedicineEntity() {
     }
 
+    public TypeofmedicineEntity(int idType, String typename) {
+        this.idType = idType;
+        this.typename = typename;
+    }
+
     public TypeofmedicineEntity(String typename) {
         this.typename = typename;
     }

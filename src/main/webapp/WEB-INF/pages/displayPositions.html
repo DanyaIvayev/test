@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Positions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script th:src="@{jquery.2.1.3.min.js}"></script>
+    <script th:src="@{script.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h3>Positions List</h3>
+    <span style="float:left;"><form action="#" class="form-inline" role="form" th:action="@{/add_position}" method="post">
+        <input type="submit" class="btn btn-default" value="Add new position">
+    </form> </span>
+    <span style="float:left;">
+            <input id="edit" class="btn btn-default" value="Edit position">
+    </span>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td><b>Choose</b></td>
+            <td><b>positionname</b></td>
+            <td><b>salary</b></td>
+        </tr>
+        </thead>
+            <tr th:each="psn:${psns}">
+                <td> <input type="checkbox"
+                                                        th:value="${psn.idPosition}" th:checked="${false}" /></td>
+                <td th:text="${psn.positionname}"></td>
+                <td th:text="${psn.salary}"></td>
+            </tr>
+    </table>
+    <FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+
+
+</div>
+</body>
+</html>

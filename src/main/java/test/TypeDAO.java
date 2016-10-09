@@ -12,4 +12,5 @@ public interface TypeDAO {
     void add(TypeofmedicineEntity type);
     void delete(int id);
     TypeofmedicineEntity getTypeById(int id);
+    void save(TypeofmedicineEntity type);
 }

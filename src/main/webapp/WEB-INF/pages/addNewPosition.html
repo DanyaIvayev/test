@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new position</title>
+</head>
+<body>
+<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/position_save}" method="post">
+    <p><b>Название должности:</b>
+        <input type="text" name="positionName" size="70" placeholder="Введите название должности">
+    </p>
+    <p><b>Оклад:</b>
+        <input type="text" name="salary" size="70" placeholder="Введите размер оклада">
+    </p>
+    <input type="submit" class="btn btn-primary" value="Add">
+</form>
+</body>
+</html>

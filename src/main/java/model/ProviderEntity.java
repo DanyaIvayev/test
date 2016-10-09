@@ -20,6 +20,12 @@ public class ProviderEntity {
         this.providerphone = providerphone;
     }
 
+    public ProviderEntity(int idProvider, String providername, int providerphone) {
+        this.idProvider = idProvider;
+        this.providername = providername;
+        this.providerphone = providerphone;
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id_provider")

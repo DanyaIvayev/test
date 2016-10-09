@@ -48,6 +48,18 @@ public class BranchDAOImpl implements BranchDAO{
             ex.printStackTrace();
         }
     }
+    @Transactional
+    public void save(BranchEntity branch){
+        try {
+            BranchEntity old= getBranchById(branch.getIdBranch());
+            old.setAddress(branch.getAddress());
+            old.setPhone(branch.getPhone());
+            entityManager.merge(old);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public void delete(int id) {
 

@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit branch</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/save_branch}" method="post">
+    <input type ="hidden" name="editId" th:value="${brn.idBranch}">
+    <p><b>Адрес филиала:</b>
+        <input type="text" name="branchName" size="70" th:value="${brn.address}">
+    </p>
+    <p><b>Телефон</b>
+        <input type="text" name="phone" size="70" th:value="${brn.phone}">
+    </p>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>

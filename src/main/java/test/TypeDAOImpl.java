@@ -30,6 +30,18 @@ public class TypeDAOImpl implements TypeDAO {
         }
     }
 
+    @Transactional
+    public void save(TypeofmedicineEntity type){
+        try {
+            TypeofmedicineEntity old= getTypeById(type.getIdType());
+            old.setTypename(type.getTypename());
+            entityManager.merge(old);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void delete(int id) {
 
     }

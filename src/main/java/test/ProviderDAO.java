@@ -12,4 +12,5 @@ public interface ProviderDAO {
     void add(ProviderEntity provider);
     void delete(int id);
     ProviderEntity getProviderById(int id);
+    void save (ProviderEntity provider);
 }

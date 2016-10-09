@@ -1,0 +1,6 @@
+.chatForm {
+    float: left;
+}
+.chatForm, .declineForm {
+    display: inline-block; /* or inline */
+}

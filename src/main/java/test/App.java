@@ -274,4 +274,67 @@ public class App //extends AbstractController
         return mav;
     }
 
+    @RequestMapping(value="/edit_branch", method = RequestMethod.POST)
+    public ModelAndView editBranch(@RequestParam(value = "editId") Integer id){
+        BranchEntity branch = branchDAO.getBranchById(id);
+        ModelAndView mav = new ModelAndView("editBranch", "brn", branch);
+        return mav;
+    }
+
+    @RequestMapping(value="/save_branch", method = RequestMethod.POST)
+    public ModelAndView saveBranch(@RequestParam(value="editId") Integer id,
+                                   @RequestParam(value="branchName") String address,
+                                   @RequestParam(value="phone") Integer phone){
+        BranchEntity branch = new BranchEntity( phone, address,id);
+        branchDAO.save(branch);
+        return new ModelAndView("displayBranches", "advs", branchDAO.list());
+    }
+
+    @RequestMapping(value="/edit_type", method=RequestMethod.POST)
+    public ModelAndView editType(@RequestParam(value = "editId") Integer id){
+        TypeofmedicineEntity type = typeDAO.getTypeById(id);
+        ModelAndView mav = new ModelAndView("editType", "type", type);
+        return mav;
+    }
+
+    @RequestMapping(value="/save_edit_type", method = RequestMethod.POST)
+    public ModelAndView saveType(@RequestParam(value="editTypeId") Integer id,
+                                 @RequestParam(value="typeName") String typeName){
+        TypeofmedicineEntity type = new TypeofmedicineEntity(id, typeName);
+        typeDAO.save(type);
+        return new ModelAndView("displayTypes", "types", typeDAO.list());
+    }
+
+    @RequestMapping(value="/edit_position", method = RequestMethod.POST)
+    public ModelAndView editPosition(@RequestParam(value="editId") Integer id){
+        PositionEntity position = positionDAO.getPositionById(id);
+        ModelAndView mav= new ModelAndView("editPosition", "psn", position);
+        return mav;
+    }
+
+    @RequestMapping(value="/position_edit_save", method = RequestMethod.POST)
+    public ModelAndView savePosition(@RequestParam(value = "editPositionId") Integer id,
+                                     @RequestParam(value="positionName") String positionName,
+                                     @RequestParam(value="salary") Integer salary){
+        PositionEntity position = new PositionEntity(id, positionName, salary);
+        positionDAO.save(position);
+        return new ModelAndView("displayPositions", "psns", positionDAO.list());
+    }
+
+    @RequestMapping(value="/edit_provider", method=RequestMethod.POST)
+    public ModelAndView editProvider(@RequestParam(value="editId") Integer id){
+        ProviderEntity provider = providerDAO.getProviderById(id);
+        ModelAndView mav= new ModelAndView("editProvider", "prd", provider);
+        return mav;
+    }
+
+    @RequestMapping(value = "/provider_edit_save", method = RequestMethod.POST)
+    public ModelAndView saveProvider(@RequestParam(value="editProviderId") Integer id,
+                                     @RequestParam(value="providerName") String providerName,
+                                     @RequestParam(value="providerPhone") Integer phone){
+        ProviderEntity provider = new ProviderEntity(id,providerName, phone);
+        providerDAO.save(provider);
+        return new ModelAndView("displayProviders", "prds", providerDAO.list());
+    }
+
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit position</title>
+</head>
+<body>
+<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/position_edit_save}" method="post">
+    <input type ="hidden" name="editPositionId" th:value="${psn.idPosition}">
+    <p><b>Название должности:</b>
+        <input type="text" name="positionName" size="70" th:value="${psn.positionname}">
+    </p>
+    <p><b>Оклад:</b>
+        <input type="text" name="salary" size="70" th:value="${psn.salary}">
+    </p>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+</body>
+</html>

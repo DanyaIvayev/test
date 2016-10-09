@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit provider</title>
+</head>
+<body>
+<form role="form" enctype="multipart/form-data" class="form-horizontal" action="provider_edit_save" method="post">
+    <input type ="hidden" name="editProviderId" th:value="${prd.idProvider}">
+    <p><b>Название компании-поставщика:</b>
+        <input type="text" name="providerName" size="70" th:value="${prd.providername}">
+    </p>
+    <p><b>Телефон поставщика:</b>
+        <input type="text" name="providerPhone" size="70" th:value="${prd.providerphone}">
+    </p>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+
+</body>
+</html>

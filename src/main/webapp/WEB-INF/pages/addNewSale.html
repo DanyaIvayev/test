@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new sale</title>
+</head>
+<body>
+<form action ="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/sale_save}" method="post">
+
+    <p><b>Адрес филиала:</b>
+        <select id="branchAddress" name="branchAddress">
+                <option th:each="brn:${brns}" th:value="${brn.idBranch}" th:text="${brn.address}"></option>
+        </select>
+    </p>
+    <p> <b>Лекарство:</b>
+        <select id="medicineName" name="medicineName">
+                <option th:each="mdn:${mdns}" th:value="${mdn.idMedicine}" th:text="${mdn.medicinename}"></option>
+        </select>
+    </p>
+    <p><b>Количество лекарств на складе:</b>
+        <input type="text" name="inStock" size="70" placeholder="Введите кол-во в наличии">
+    </p>
+    <p><b>Количество проданных:</b>
+        <input type="text" name="sold" size="70" placeholder="Введите кол-во проданных">
+    </p>
+
+    <input type="submit" class="btn btn-primary" value="Add">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>

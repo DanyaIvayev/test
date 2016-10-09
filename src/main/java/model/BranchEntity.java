@@ -26,6 +26,12 @@ public class BranchEntity {
         this.phone = phone;
     }
 
+    public BranchEntity(Integer phone, String address, int idBranch) {
+        this.phone = phone;
+        this.address = address;
+        this.idBranch = idBranch;
+    }
+
     @OneToMany(mappedBy="branch")
     public List<SalesEntity> getSales() {
         return sales;

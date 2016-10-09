@@ -11,5 +11,6 @@ public interface BranchDAO {
     List<BranchEntity> list();
     void add(BranchEntity branch);
     BranchEntity getBranchById(int id);
+    void save(BranchEntity branch);
     void delete(int id);
 }

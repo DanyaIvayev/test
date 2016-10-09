@@ -36,7 +36,19 @@ public class ProviderDAOImpl implements ProviderDAO {
             entityManager.persist(provider);
             entityManager.flush();
         } catch (Exception ex){
-           // entityManager.getTransaction().rollback();
+            ex.printStackTrace();
+        }
+    }
+
+    @Transactional
+    public void save(ProviderEntity provider) {
+        try{
+            ProviderEntity old = getProviderById(provider.getIdProvider());
+            old.setProvidername(provider.getProvidername());
+            old.setProviderphone(provider.getProviderphone());
+            entityManager.merge(old);
+            entityManager.flush();
+        } catch (Exception ex){
             ex.printStackTrace();
         }
     }

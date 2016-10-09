@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add new Branch-Provider</title>
+</head>
+<body>
+<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/branchProvider_save}" method="post">
+
+    <p><b>Адрес филиала:</b>
+        <select id="branchAddress" name="branchAddress">
+            <option th:each="brn:${brns}" th:value="${brn.idBranch}" th:text="${brn.address}">
+            </option>
+        </select>
+    </p>
+    <p> <b>Поставщик:</b>
+        <select id="providerName" name="providerName">
+                <option th:each="pds:${prds}" th:value="${pds.idProvider}" th:text="${pds.providername}"></option>
+        </select>
+    </p>
+    <p> <b>День поставки:</b>
+        <select id="dayOfBilievery" name="dayOfBilievery">
+            <option value="Понедельник">Понедельник</option>
+            <option value="Вторник">Вторник</option>
+            <option value="Среда">Среда</option>
+            <option value="Четверг">Четверг</option>
+            <option value="Пятница">Пятница</option>
+            <option value="Суббота">Суббота</option>
+            <option value="Воскресение">Воскресение</option>
+        </select>
+    </p>
+
+    <input type="submit" class="btn btn-primary" value="Add">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>

@@ -11,5 +11,6 @@ public interface PositionDAO {
     List<PositionEntity> list();
     void add(PositionEntity position);
     void delete(int id);
+    void save(PositionEntity position);
     PositionEntity getPositionById(int id);
 }

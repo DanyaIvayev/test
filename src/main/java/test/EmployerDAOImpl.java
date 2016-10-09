@@ -38,6 +38,9 @@ public class EmployerDAOImpl implements EmployerDAO{
         }
     }
 
+    //@Transactional
+   // public void save()
+
     public void delete(int id) {
 
     }

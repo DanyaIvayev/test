@@ -34,6 +34,19 @@ public class PositionDAOImpl implements PositionDAO {
         }
     }
 
+    @Transactional
+    public void save(PositionEntity position) {
+        try{
+            PositionEntity old = getPositionById(position.getIdPosition());
+            old.setPositionname(position.getPositionname());
+            old.setSalary(position.getSalary());
+            entityManager.merge(old);
+            entityManager.flush();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void delete(int id) {
 
     }

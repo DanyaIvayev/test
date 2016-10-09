@@ -23,6 +23,12 @@ public class PositionEntity {
         this.salary = salary;
     }
 
+    public PositionEntity(int idPosition, String positionname, int salary) {
+        this.idPosition = idPosition;
+        this.positionname = positionname;
+        this.salary = salary;
+    }
+
     @OneToMany(mappedBy = "position")
     public List<EmployerEntity> getEmployers() {
         return employers;

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new employer</title>
+</head>
+<body>
+<form action ="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/employer_save}" method="post">
+    <p><b>Имя работника:</b>
+        <input type="text" name="firstName" size="70" placeholder="Введите имя работника">
+    </p>
+    <p><b>Фамилия:</b>
+        <input type="text" name="secondName" size="70" placeholder="Введите фамилию">
+    </p>
+    <p><b>Отчество:</b>
+        <input type="text" name="patronymic" size="70" placeholder="Введите отчество">
+    </p>
+    <p><b>ИНН:</b>
+        <input type="text" name="inn" size="70" placeholder="Введите ИНН">
+    </p>
+    <p><b>Серия паспорта:</b>
+        <input type="text" name="serialOfPassport" size="70" placeholder="Введите серию паспорта">
+    </p>
+    <p><b>Номер паспорта:</b>
+        <input type="text" name="numberOfPassport" size="70" placeholder="Введите номер паспорта">
+    </p>
+    <p><b>Адрес филиала:</b>
+        <select id="branchAddress" name="branchAddress">
+            <option th:each="brn: ${brns}" th:value="${brn.idBranch}" th:text="${brn.address}"></option>
+        </select>
+    </p>
+    <p> <b>Должность:</b>
+        <select id="positionName" name="positionName">
+                <option th:each="psn: ${psns}" th:value="${psn.idPosition}" th:text="${psn.positionname}"></option>
+        </select>
+    </p>
+    <input type="submit" class="btn btn-primary" value="Add">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>

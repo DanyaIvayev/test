@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Type</title>
+</head>
+<body>
+<body>
+<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/save_edit_type}" method="post">
+    <input type ="hidden" name="editTypeId" th:value="${type.idType}">
+
+    <p><b>Вид лекарства:</b>
+        <input type="text" name="typeName" size="70" th:value="${type.typename}">
+    </p>
+
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</body>
+</html>

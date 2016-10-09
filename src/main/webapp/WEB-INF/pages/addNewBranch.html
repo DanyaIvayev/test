@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add new branch</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/add_save}" method="post">
+    <p><b>Адрес филиала:</b>
+        <input type="text" name="branchName" size="70" placeholder="Введите адрес филиала">
+    </p>
+    <p><b>Телефон</b>
+        <input type="text" name="phone" size="70" placeholder="Введите номер телефона">
+    </p>
+    <input type="submit" class="btn btn-primary" value="Add">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>
