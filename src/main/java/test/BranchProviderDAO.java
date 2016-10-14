@@ -10,5 +10,7 @@ import java.util.List;
 public interface BranchProviderDAO {
     List<BranchProviderEntity> list();
     void add(BranchProviderEntity branchProvider);
-    void delete(int id);
+    void delete(int id, int idP);
+    BranchProviderEntity getBrProviderByIds(int idBranch, int idProvider);
+    void save(BranchProviderEntity branchProvider);
 }

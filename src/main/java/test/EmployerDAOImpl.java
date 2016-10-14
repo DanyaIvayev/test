@@ -1,10 +1,12 @@
 package test;
 
+import model.BranchEntity;
 import model.EmployerEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
@@ -38,10 +40,40 @@ public class EmployerDAOImpl implements EmployerDAO{
         }
     }
 
-    //@Transactional
-   // public void save()
+    public EmployerEntity getEmployerById(int id) {
+        Query q = entityManager.createQuery("SELECT b FROM EmployerEntity b WHERE b.idEmployer = :id");
+        q.setParameter("id", id);
+        EmployerEntity employer = (EmployerEntity)q.getSingleResult();
+        return employer;
+    }
 
+    @Transactional
+    public void save(EmployerEntity employer){
+        try{
+            EmployerEntity old = getEmployerById(employer.getIdEmployer());
+            old.setFirstname(employer.getFirstname());
+            old.setSecondname(employer.getSecondname());
+            old.setPatronymic(employer.getPatronymic());
+            old.setInn(employer.getInn());
+            old.setSerialofpassport(employer.getSerialofpassport());
+            old.setNumberofpassport(employer.getNumberofpassport());
+            old.setPosition(employer.getPosition());
+            old.setBranch(employer.getBranch());
+            entityManager.merge(old);
+            entityManager.flush();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @Transactional
     public void delete(int id) {
-
+        try{
+            EmployerEntity forDelete = getEmployerById(id);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

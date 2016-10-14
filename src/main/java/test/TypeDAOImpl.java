@@ -42,8 +42,15 @@ public class TypeDAOImpl implements TypeDAO {
         }
     }
 
+    @Transactional
     public void delete(int id) {
-
+        try{
+            TypeofmedicineEntity forDelete = getTypeById(id);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public TypeofmedicineEntity getTypeById(int id) {

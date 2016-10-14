@@ -38,7 +38,34 @@ public class SaleDAOImpl implements SaleDAO {
         }
     }
 
-    public void delete(int id) {
+    @Transactional
+    public void save(SalesEntity sale) {
+        try{
+            SalesEntity old = getSaleByIds(sale.getIdBranch(), sale.getIdMedicine());
+            old.setInstock(sale.getInstock());
+            old.setSold(sale.getSold());
+            entityManager.merge(old);
+            entityManager.flush();
+        }catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    @Transactional
+    public void delete(int id, int idM) {
+        try{
+            SalesEntity forDelete = getSaleByIds(id, idM);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
+    public SalesEntity getSaleByIds(int branchId, int medicineId) {
+        Query q = entityManager.createQuery("SELECT b FROM SalesEntity b WHERE b.idBranch = :id AND b.idMedicine = :idM");
+        q.setParameter("id", branchId);
+        q.setParameter("idM", medicineId);
+        SalesEntity sale = (SalesEntity)q.getSingleResult();
+        return sale;
     }
 }

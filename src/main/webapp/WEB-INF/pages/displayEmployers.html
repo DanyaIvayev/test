@@ -5,19 +5,26 @@
     <title>Employers</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+    <script th:src="@{jquery.2.1.3.min.js}"></script>
+    <script th:src="@{script.js}"></script>
 </head>
 <body>
 
 <div class="container">
     <h3>Employers List</h3>
-    <form action="#" class="form-inline" role="form" th:action="@{/add_employer}" method="post">
+    <span style="float:left;"><form action="#" class="form-inline" role="form" th:action="@{/add_employer}" method="post">
         <input type="submit" class="btn btn-default" value="Add new employer">
-    </form>
+    </form></span>
+     <span style="float:left;">
+            <input id="edit" class="btn btn-default" value="Edit employer">
+    </span>
+     <span style="float:left;">
+            <input id="delete" class="btn btn-default" value="Delete employer">
+    </span>
     <table class="table table-striped">
         <thead>
         <tr>
-            <td><b>idEmployer</b></td>
+            <td><b>Choose</b></td>
             <td><b>First Name</b></td>
             <td><b>Second Name</b></td>
             <td><b>Patronymic</b></td>
@@ -28,12 +35,13 @@
         </tr>
         </thead>
             <tr th:each="emp:${emps}">
-                <td th:text="${emp.idEmployer}"></td>
+                <td><input type="checkbox"
+                                                       th:value="${emp.idEmployer}" th:checked="${false}" /></td>
                 <td th:text="${emp.firstname}"></td>
                 <td th:text="${emp.secondname}"></td>
                 <td th:text="${emp.patronymic}"></td>
                 <td th:text="${emp.inn}"></td>
-                <td th:text="Serial: ${emp.serialofpassport} Number: ${emp.numberofpassport}"></td>
+                <td th:text="'Serial: '+ ${emp.serialofpassport} +' Number: '+ ${emp.numberofpassport}"></td>
                 <td th:text="${emp.branch.address}"></td>
                 <td th:text="${emp.position.positionname}"></td>
             </tr>

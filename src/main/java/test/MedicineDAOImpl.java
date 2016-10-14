@@ -36,8 +36,32 @@ public class MedicineDAOImpl implements MedicineDAO {
         }
     }
 
-    public void delete(int id) {
+    @Transactional
+    public void save(MedicineEntity medicine) {
+        try{
+            MedicineEntity old = getMedicineById(medicine.getIdMedicine());
+            old.setCountry(medicine.getCountry());
+            old.setMedicinename(medicine.getMedicinename());
+            old.setPrice(medicine.getPrice());
+            old.setType(medicine.getType());
+            entityManager.merge(old);
+            entityManager.flush();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
+
+
+    @Transactional
+    public void delete(int id) {
+        try{
+           MedicineEntity forDelete = getMedicineById(id);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public MedicineEntity getMedicineById(int id) {

@@ -1,6 +1,7 @@
 package test;
 
 import model.BranchEntity;
+import model.BranchProviderEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -61,9 +62,17 @@ public class BranchDAOImpl implements BranchDAO{
         }
     }
 
+    @Transactional
     public void delete(int id) {
-
+        try{
+            BranchEntity forDelete = getBranchById(id);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
+
     public BranchEntity getBranchById(int id){
         Query q = entityManager.createQuery("SELECT b FROM BranchEntity b WHERE b.idBranch = :id");
         q.setParameter("id", id);

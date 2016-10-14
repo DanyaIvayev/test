@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Sale</title>
+</head>
+<body>
+<form action ="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/sale_edit_save}" method="post">
+    <input type ="hidden" name="editBranchId" th:value="${sls.idBranch}">
+    <input type ="hidden" name="editMedicineId" th:value="${sls.idMedicine}">
+    <p th:text="'Адрес филиала: '+${brn.address}"><b>Адрес филиала:</b>
+        <!--<select id="branchAddress" name="branchAddress">-->
+            <!--<option th:each="brn:${brns}" th:value="${brn.idBranch}" th:text="${brn.address}" th:selected="${brn.idBranch==sls.idBranch}"></option>-->
+        <!--</select>-->
+    </p>
+    <p th:text="'Лекарство: '+${mdn.medicinename}"> <b>Лекарство:</b>
+        <!--<select id="medicineName" name="medicineName">-->
+            <!--<option th:each="mdn:${mdns}" th:value="${mdn.idMedicine}" th:text="${mdn.medicinename}" th:selected="${mdn.idMedicine==sls.idMedicine}"></option>-->
+        <!--</select>-->
+    </p>
+    <p><b>Количество лекарств на складе:</b>
+        <input type="text" name="inStock" size="70" th:value="${sls.instock}">
+    </p>
+    <p><b>Количество проданных:</b>
+        <input type="text" name="sold" size="70" th:value="${sls.sold}">
+    </p>
+
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>

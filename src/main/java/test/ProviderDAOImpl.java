@@ -53,8 +53,15 @@ public class ProviderDAOImpl implements ProviderDAO {
         }
     }
 
+    @Transactional
     public void delete(int id) {
-
+        try{
+            ProviderEntity forDelete = getProviderById(id);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public ProviderEntity getProviderById(int id) {

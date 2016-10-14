@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -37,7 +38,35 @@ public class BranchProviderDAOImpl implements BranchProviderDAO {
         }
     }
 
-    public void delete(int id) {
+    @Transactional
+    public void delete(int id, int idP) {
+        try{
+            BranchProviderEntity forDelete = getBrProviderByIds(id, idP);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
+    public BranchProviderEntity getBrProviderByIds(int idBranch, int idProvider) {
+        Query q = entityManager.createQuery("SELECT b FROM BranchProviderEntity b WHERE b.idBranch = :id AND b.idProvider = :idP");
+        q.setParameter("id", idBranch);
+        q.setParameter("idP", idProvider);
+        BranchProviderEntity branchProvider = (BranchProviderEntity)q.getSingleResult();
+        return branchProvider;
+    }
+    @Transactional
+    public void save(BranchProviderEntity branchProvider) {
+        try{
+            BranchProviderEntity old = getBrProviderByIds(branchProvider.getIdBranch(), branchProvider.getIdProvider());
+            old.setDayOfBilevery(branchProvider.getDayOfBilevery());
+           // old.setBranch(branchProvider.getBranch());
+            //old.setProvider(branchProvider.getProvider());
+            entityManager.merge(old);
+            entityManager.flush();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

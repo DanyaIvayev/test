@@ -25,6 +25,13 @@ public class BranchProviderEntity {
         this.provider = provider;
     }
 
+    public BranchProviderEntity(int idBranch, int idProvider, String dayOfBilevery) {
+        this.idBranch = idBranch;
+        this.idProvider = idProvider;
+        this.dayOfBilevery = dayOfBilevery;
+
+    }
+
     @ManyToOne
     @PrimaryKeyJoinColumn(name="id_branch", referencedColumnName="id_branch")
     public BranchEntity getBranch() {

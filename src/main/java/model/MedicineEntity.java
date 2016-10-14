@@ -17,6 +17,14 @@ public class MedicineEntity {
     public MedicineEntity() {
     }
 
+    public MedicineEntity(int idMedicine, String medicinename, Double price, String country, TypeofmedicineEntity type) {
+        this.idMedicine = idMedicine;
+        this.medicinename = medicinename;
+        this.price = price;
+        this.country = country;
+        this.type = type;
+    }
+
     public MedicineEntity(String medicinename, Double price, String country, TypeofmedicineEntity type) {
         this.medicinename = medicinename;
         this.price = price;

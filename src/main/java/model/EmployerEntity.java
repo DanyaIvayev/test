@@ -33,6 +33,18 @@ public class EmployerEntity {
         this.position = position;
     }
 
+    public EmployerEntity(int idEmployer, String firstname, String secondname, String patronymic, int inn, int serialofpassport, int numberofpassport, BranchEntity branch, PositionEntity position) {
+        this.idEmployer = idEmployer;
+        this.firstname = firstname;
+        this.secondname = secondname;
+        this.patronymic = patronymic;
+        this.inn = inn;
+        this.serialofpassport = serialofpassport;
+        this.numberofpassport = numberofpassport;
+        this.branch = branch;
+        this.position = position;
+    }
+
     @ManyToOne
     @PrimaryKeyJoinColumn(name="id_branch", referencedColumnName = "id_branch")
     public BranchEntity getBranch() {

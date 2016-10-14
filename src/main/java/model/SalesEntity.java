@@ -29,6 +29,13 @@ public class SalesEntity {
         this.medicine = medicine;
     }
 
+    public SalesEntity(int idBranch, int idMedicine, int instock, int sold) {
+        this.idBranch = idBranch;
+        this.idMedicine = idMedicine;
+        this.instock = instock;
+        this.sold = sold;
+    }
+
     @ManyToOne
     @PrimaryKeyJoinColumn(name="id_branch", referencedColumnName="id_branch")
   /* if this JPA model doesn't create a table for the "PROJ_EMP" entity,

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit medicine</title>
+</head>
+<body>
+<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/medicine_edit_save}" method="post">
+    <input type ="hidden" name="editMedicineId" th:value="${mdn.idMedicine}">
+
+    <p><b>Название лекарства:</b>
+        <input type="text" name="medicineName" size="70" th:value="${mdn.medicinename}">
+    </p>
+    <p><b>Цена:</b>
+        <input type="text" name="price" size="70" th:value="${mdn.price}">
+    </p>
+    <p><b>Страна производства:</b>
+        <input type="text" name="country" size="70" th:value="${mdn.country}">
+    </p>
+
+    <p><b>Тип:</b>
+        <select id="type" name="type">
+            <option th:each="type:${types}" th:value="${type.idType}" th:text="${type.typename}" th:selected="${type.idType==mdn.type.idType}"></option>
+        </select>
+    </p>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>

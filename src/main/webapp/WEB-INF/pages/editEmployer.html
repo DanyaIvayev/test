@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employers</title>
+</head>
+<body>
+<form action ="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/employer_edit_save}" method="post">
+    <input type ="hidden" name="editEmployerId" th:value="${emp.idEmployer}">
+    <p><b>Имя работника:</b>
+        <input type="text" name="firstName" size="70" th:value="${emp.firstname}">
+    </p>
+    <p><b>Фамилия:</b>
+        <input type="text" name="secondName" size="70" th:value="${emp.secondname}">
+    </p>
+    <p><b>Отчество:</b>
+        <input type="text" name="patronymic" size="70" th:value="${emp.patronymic}">
+    </p>
+    <p><b>ИНН:</b>
+        <input type="text" name="inn" size="70" th:value="${emp.inn}">
+    </p>
+    <p><b>Серия паспорта:</b>
+        <input type="text" name="serialOfPassport" size="70" th:value="${emp.serialofpassport}" >
+    </p>
+    <p><b>Номер паспорта:</b>
+        <input type="text" name="numberOfPassport" size="70" th:value="${emp.numberofpassport}">
+    </p>
+    <p><b>Адрес филиала:</b>
+        <select id="branchAddress" name="branchAddress">
+            <option th:each="brn: ${brns}" th:value="${brn.idBranch}" th:text="${brn.address}" th:selected="${brn.idBranch==emp.branch.idBranch}"></option>
+        </select>
+    </p>
+    <p> <b>Должность:</b>
+        <select id="positionName" name="positionName">
+            <option th:each="psn: ${psns}" th:value="${psn.idPosition}" th:text="${psn.positionname}" th:selected="${psn.idPosition==emp.position.idPosition}"></option>
+        </select>
+    </p>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>

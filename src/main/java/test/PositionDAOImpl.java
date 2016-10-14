@@ -47,8 +47,15 @@ public class PositionDAOImpl implements PositionDAO {
         }
     }
 
+    @Transactional
     public void delete(int id) {
-
+        try{
+            PositionEntity forDelete = getPositionById(id);
+            entityManager.remove(forDelete);
+            entityManager.flush();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public PositionEntity getPositionById(int id){

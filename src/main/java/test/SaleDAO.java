@@ -10,5 +10,7 @@ import java.util.List;
 public interface SaleDAO {
     List<SalesEntity> list();
     void add(SalesEntity sale);
-    void delete(int id);
+    void delete(int id, int idP);
+    SalesEntity getSaleByIds(int branchId, int medicineId);
+    void save(SalesEntity sale);
 }

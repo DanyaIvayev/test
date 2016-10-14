@@ -5,17 +5,25 @@
     <title>Sales</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+    <script th:src="@{jquery.2.1.3.min.js}"></script>
+    <script th:src="@{script.js}"></script>
 </head>
 <body>
 <div class="container">
     <h3>Sales List</h3>
-    <form action="#" class="form-inline" role="form" th:action="@{/add_sale}" method="post">
+    <span style="float:left;"><form action="#" class="form-inline" role="form" th:action="@{/add_sale}" method="post">
         <input type="submit" class="btn btn-default" value="Add new sale">
-    </form>
+    </form></span>
+    <span style="float:left;">
+            <input id="edit" class="btn btn-default" value="Edit Sale">
+    </span>
+     <span style="float:left;">
+            <input id="delete" class="btn btn-default" value="Delete sale">
+    </span>
     <table class="table table-striped">
         <thead>
         <tr>
+            <td><b>Choose</b></td>
             <td><b>Branch Address</b></td>
             <td><b>Medicine Name</b></td>
             <td><b>In stock</b></td>
@@ -23,8 +31,12 @@
         </tr>
         </thead>
             <tr th:each="sls:${sales}">
-                <td th:text="${sls.medicine.medicinename}"></td>
+                <td>
+                    <input type="checkbox"
+                           th:value="${sls.idBranch}+';'+${sls.idMedicine}" th:checked="${false}" />
+                </td>
                 <td th:text="${sls.branch.address}"></td>
+                <td th:text="${sls.medicine.medicinename}"></td>
                 <td th:text="${sls.instock}"></td>
                 <td th:text="${sls.sold}"></td>
             </tr>

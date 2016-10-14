@@ -12,4 +12,5 @@ public interface MedicineDAO {
     void add(MedicineEntity medicine);
     void delete(int id);
     MedicineEntity getMedicineById(int id);
+    void save(MedicineEntity medicine);
 }

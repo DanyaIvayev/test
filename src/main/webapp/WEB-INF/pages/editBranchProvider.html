@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Branch-Provider</title>
+</head>
+<body>
+<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/branchProvider_edit_save}" method="post">
+    <input type ="hidden" name="editBranchId" th:value="${bpr.idBranch}">
+    <input type ="hidden" name="editProviderId" th:value="${bpr.idProvider}">
+    <p th:text="'Адрес филиала: '+${brn.address}"><b>Адрес филиала:</b>
+        <!--<select id="branchAddress" name="branchAddress">-->
+            <!--<option th:each="brn:${brns}" th:value="${brn.idBranch}" th:text="${brn.address}" th:selected="${brn.idBranch==bpr.idBranch}">-->
+            <!--</option>-->
+        <!--</select>-->
+    </p>
+    <p th:text="'Поставщик: '+${prd.providername}"> <b>Поставщик:</b>
+        <!--<select id="providerName" name="providerName">-->
+            <!--<option th:each="pds:${prds}" th:value="${pds.idProvider}" th:text="${pds.providername}" th:selected="${pds.idProvider==bpr.idProvider}"></option>-->
+        <!--</select>-->
+    </p>
+    <p> <b>День поставки:</b>
+        <select id="dayOfBilievery" name="dayOfBilievery">
+            <option th:each="bps:${bpss}" th:value="${bps}" th:text="${bps}" th:selected="${bps==bpr.dayOfBilevery}"></option>
+        </select>
+    </p>
+
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
+<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</body>
+</html>
