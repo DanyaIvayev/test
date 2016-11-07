@@ -2,41 +2,64 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Employers</title>
+    <title>Редактирование сотрудника</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<form action ="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/employer_edit_save}" method="post">
-    <input type ="hidden" name="editEmployerId" th:value="${emp.idEmployer}">
-    <p><b>Имя работника:</b>
-        <input type="text" name="firstName" size="70" th:value="${emp.firstname}">
-    </p>
-    <p><b>Фамилия:</b>
-        <input type="text" name="secondName" size="70" th:value="${emp.secondname}">
-    </p>
-    <p><b>Отчество:</b>
-        <input type="text" name="patronymic" size="70" th:value="${emp.patronymic}">
-    </p>
-    <p><b>ИНН:</b>
-        <input type="text" name="inn" size="70" th:value="${emp.inn}">
-    </p>
-    <p><b>Серия паспорта:</b>
-        <input type="text" name="serialOfPassport" size="70" th:value="${emp.serialofpassport}" >
-    </p>
-    <p><b>Номер паспорта:</b>
-        <input type="text" name="numberOfPassport" size="70" th:value="${emp.numberofpassport}">
-    </p>
-    <p><b>Адрес филиала:</b>
-        <select id="branchAddress" name="branchAddress">
-            <option th:each="brn: ${brns}" th:value="${brn.idBranch}" th:text="${brn.address}" th:selected="${brn.idBranch==emp.branch.idBranch}"></option>
-        </select>
-    </p>
-    <p> <b>Должность:</b>
-        <select id="positionName" name="positionName">
-            <option th:each="psn: ${psns}" th:value="${psn.idPosition}" th:text="${psn.positionname}" th:selected="${psn.idPosition==emp.position.idPosition}"></option>
-        </select>
-    </p>
-    <input type="submit" class="btn btn-primary" value="Save">
-</form>
-<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_2.jpg}"/> </div>
+        <h3 class="left_margin">Редактирование сотрудника</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline left_margin" action ="#" role="form" enctype="multipart/form-data" th:action="@{/employer_edit_save}" method="post">
+            <input type ="hidden" name="editEmployerId" th:value="${emp.idEmployer}">
+            <table class="table">
+                <tr>
+                    <td><b>Имя работника:</b></td>
+                    <td><input type="text" name="firstName" size="70" required placeholder="Введите имя работника" th:value="${emp.firstname}">
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Фамилия:</b></td>
+                    <td><input type="text" name="secondName" size="70" required th:value="${emp.secondname}"  placeholder="Введите фамилию"></td>
+                </tr>
+                <tr>
+                    <td><b>Отчество:</b></td>
+                    <td><input type="text" name="patronymic" size="70" required th:value="${emp.patronymic}" placeholder="Введите отчество"></td>
+                </tr>
+                <tr>
+                    <td><b>ИНН:</b></td>
+                    <td><input type="text" name="inn" size="70" required th:value="${emp.inn}" placeholder="Введите ИНН (12 цифр)" pattern="[0-9]{12}"></td>
+                </tr>
+                <tr>
+                    <td><b>Серия паспорта:</b></td>
+                    <td><input type="text" name="serialOfPassport" required size="70" th:value="${emp.serialofpassport}" placeholder="Введите серию паспорта (4 цифры)" pattern="[0-9]{4}" ></td>
+                </tr>
+                <tr>
+                    <td><b>Номер паспорта:</b></td>
+                    <td><input type="text" name="numberOfPassport" required size="70" th:value="${emp.numberofpassport}" placeholder="Введите номер паспорта (6 цифр)" pattern="[0-9]{6}"></td>
+                </tr>
+                <tr>
+                    <td><b>Адрес филиала:</b></td>
+                    <td>  <select id="branchAddress" name="branchAddress" class="left_margin">
+                        <option th:each="brn: ${brns}" th:value="${brn.idBranch}" th:text="${brn.address}" th:selected="${brn.idBranch==emp.branch.idBranch}"></option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td><b>Должность:</b></td>
+                    <td><select id="positionName" name="positionName" class="left_margin">
+                        <option th:each="psn: ${psns}" th:value="${psn.idPosition}" th:text="${psn.positionname}" th:selected="${psn.idPosition==emp.position.idPosition}"></option>
+                    </select></td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+            <INPUT Type="button" VALUE="Назад" class="btn btn-default left_margin add-button-width" onClick="history.go(-1);return true;">
+        </form>
+    </div>
+</div>
 </body>
 </html>

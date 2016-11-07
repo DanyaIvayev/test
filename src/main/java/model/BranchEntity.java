@@ -11,7 +11,7 @@ import java.util.List;
 public class BranchEntity {
     private int idBranch;
     private String address;
-    private Integer phone;
+    private Long phone;
 
 
     private List<SalesEntity> sales;
@@ -21,12 +21,12 @@ public class BranchEntity {
     public BranchEntity() {
     }
 
-    public BranchEntity(String address, Integer phone) {
+    public BranchEntity(String address, Long phone) {
         this.address = address;
         this.phone = phone;
     }
 
-    public BranchEntity(Integer phone, String address, int idBranch) {
+    public BranchEntity(Long phone, String address, int idBranch) {
         this.phone = phone;
         this.address = address;
         this.idBranch = idBranch;
@@ -83,11 +83,11 @@ public class BranchEntity {
 
     @Basic
     @Column(name = "phone")
-    public Integer getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

@@ -7,37 +7,50 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script th:src="@{jquery.2.1.3.min.js}"></script>
     <script th:src="@{script.js}"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<div class="container">
-    <h3>Positions List</h3>
-    <span style="float:left;"><form action="#" class="form-inline" role="form" th:action="@{/add_position}" method="post">
-        <input type="submit" class="btn btn-default" value="Add new position">
-    </form> </span>
-    <span style="float:left;">
-            <input id="edit" class="btn btn-default" value="Edit position">
-    </span>
- <span style="float:left;">
-            <input id="delete" class="btn btn-default" value="Delete position">
-    </span>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><b>Choose</b></td>
-            <td><b>positionname</b></td>
-            <td><b>salary</b></td>
-        </tr>
-        </thead>
-            <tr th:each="psn:${psns}">
-                <td> <input type="checkbox"
-                                                        th:value="${psn.idPosition}" th:checked="${false}" /></td>
-                <td th:text="${psn.positionname}"></td>
-                <td th:text="${psn.salary}"></td>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_harold.jpg}"/> </div>
+        <h3 class="left_margin">Список должностей</h3>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-4">
+            <span class = "chatForm"><form action="#" class="form-inline" role="form" th:action="@{/add_position}" method="post">
+                <input type="submit" class="btn btn-primary widthButton" value="Добавить должность">
+            </form> </span>
+        </div>
+        <div class="col-md-4">
+            <span class = "chatForm">
+                    <input id="edit" type="button" class="btn btn-primary widthButton" value="Редактировать">
+            </span>
+        </div>
+        <div class="col-md-4">
+             <span class = "chatForm">
+                        <input id="delete" type="button" class="btn btn-primary widthButton" value="Удалить">
+             </span>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td><b>Выбрать</b></td>
+                <td><b>Название должности</b></td>
+                <td><b>Оклад</b></td>
             </tr>
-    </table>
-    <FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
-
-
+            </thead>
+                <tr th:each="psn:${psns}">
+                    <td> <input type="checkbox"
+                                                            th:value="${psn.idPosition}" th:checked="${false}" /></td>
+                    <td th:text="${psn.positionname}"></td>
+                    <td th:text="${psn.salary}"></td>
+                </tr>
+        </table>
+    </div>
+    <FORM action="#" class="form-inline left_margin" role="form" th:action="@{/index}" method="post"><INPUT Type="submit" VALUE="На главную" class="btn btn-primary"></FORM>
 </div>
 </body>
 </html>

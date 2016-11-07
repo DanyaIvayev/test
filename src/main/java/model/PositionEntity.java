@@ -11,19 +11,19 @@ import java.util.List;
 public class PositionEntity {
     private int idPosition;
     private String positionname;
-    private int salary;
+    private double salary;
     private List<EmployerEntity> employers;
 
 
     public PositionEntity() {
     }
 
-    public PositionEntity(String positionname, int salary) {
+    public PositionEntity(String positionname, double salary) {
         this.positionname = positionname;
         this.salary = salary;
     }
 
-    public PositionEntity(int idPosition, String positionname, int salary) {
+    public PositionEntity(int idPosition, String positionname, double salary) {
         this.idPosition = idPosition;
         this.positionname = positionname;
         this.salary = salary;
@@ -61,11 +61,11 @@ public class PositionEntity {
 
     @Basic
     @Column(name = "salary")
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -87,7 +87,7 @@ public class PositionEntity {
     public int hashCode() {
         int result = idPosition;
         result = 31 * result + (positionname != null ? positionname.hashCode() : 0);
-        result = 31 * result + salary;
+        result = 31 * result + (int) salary;
         return result;
     }
 }

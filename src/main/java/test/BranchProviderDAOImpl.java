@@ -53,8 +53,10 @@ public class BranchProviderDAOImpl implements BranchProviderDAO {
         Query q = entityManager.createQuery("SELECT b FROM BranchProviderEntity b WHERE b.idBranch = :id AND b.idProvider = :idP");
         q.setParameter("id", idBranch);
         q.setParameter("idP", idProvider);
-        BranchProviderEntity branchProvider = (BranchProviderEntity)q.getSingleResult();
-        return branchProvider;
+        List<BranchProviderEntity> branchProviders = q.getResultList();
+        if(branchProviders.size()==0)
+            return null;
+        return branchProviders.get(0);
     }
     @Transactional
     public void save(BranchProviderEntity branchProvider) {

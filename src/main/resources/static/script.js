@@ -71,6 +71,65 @@ $(document).ready(function(){
         }
     });
 
+    $("#addSave").click(function(e){
+        var branch_address = $('#branchAddress').find(":selected").val();
+        var medicine_name = $('#medicineName').find(":selected").val();
+        var in_stock = $('input[name="inStock"]').val();
+        var sold_t = $('input[name="sold"]').val();
+        $.ajax({
+         type : "POST",
+         url : "/index/sale_save",
+            data:{
+                branchAddress: branch_address,
+                medicineName: medicine_name,
+                inStock: in_stock,
+                sold: sold_t
+            },
+         timeout : 100000,
+         success : function(response) {
+             if(response.status == "SUCCESS") {
+                 window.location.href = response.result;
+             } else {
+                 alert(response.result);
+                 abort();
+             }
+         },
+         error : function(e) {
+                alert('Error: ' + e);
+         }
+         });
+        e.preventDefault();
+    })
+
+    $("#brPrSave").click(function(e){
+        var branch_address = $('#branchAddress').find(":selected").val();
+        var provider_name = $('#providerName').find(":selected").val();
+        var day_bilievery = $('#dayOfBilievery').find(":selected").val();
+        $.ajax({
+            type : "POST",
+            url : "/index/branchProvider_save",
+            data:{
+                branchAddress: branch_address,
+                providerName: provider_name,
+                dayOfBilievery: day_bilievery
+
+            },
+            timeout : 100000,
+
+            success : function(response) {
+                if(response.status == "SUCCESS") {
+                    window.location.href = response.result;
+                } else {
+                    alert(response.result);
+                    abort();
+                }
+            },
+            error : function(e) {
+                alert('Error: ' + e);
+            }
+        });
+        e.preventDefault();
+    })
     $("#delete").click(function () {
         var values = $('input:checkbox:checked');
         if(values.length==0)

@@ -1655,7 +1655,7 @@
     <table name="branch" schema="public" catalog="pharmacy" type="TABLE">
       <column name="id_branch" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnYnJhbmNoX2lkX2JyYW5jaF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
       <column name="address" sqlType="varchar" precision="150" scale="0" nullable="false" jdbcType="12"/>
-      <column name="phone" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="phone" sqlType="numeric" precision="131089" scale="0" nullable="true" jdbcType="2"/>
       <primary-key name="branch_pkey" columns="id_branch"/>
       <exported-key name="fk_branch_provider__branch" table="branch_provider" schema="public" catalog="pharmacy" columns="id_branch"/>
       <exported-key name="fk_employer__branch" table="employer" schema="public" catalog="pharmacy" columns="id_branch"/>
@@ -1700,14 +1700,14 @@
       <column name="firstname" sqlType="varchar" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="secondname" sqlType="varchar" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="patronymic" sqlType="varchar" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="inn" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="inn" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="serialofpassport" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="numberofpassport" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="id_branch" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="id_position" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="employer_pkey" columns="id_employer"/>
-      <foreign-key name="fk_employer__branch" columns="id_branch" ref-table="branch" ref-schema="public" ref-catalog="" ref-columns="id_branch" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fk_employer__position" columns="id_position" ref-table="position" ref-schema="public" ref-catalog="" ref-columns="id_position" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_employer__branch" columns="id_branch" ref-table="branch" ref-schema="public" ref-catalog="" ref-columns="id_branch" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_employer__position" columns="id_position" ref-table="position" ref-schema="public" ref-catalog="" ref-columns="id_position" update-rule="0" delete-rule="0" deferrability="2"/>
       <index name="idx_employer__branch" unique="false" columns="id_branch"/>
       <index name="idx_employer__position" unique="false" columns="id_position"/>
     </table>
@@ -1748,7 +1748,7 @@
     <table name="position" schema="public" catalog="pharmacy" type="TABLE">
       <column name="id_position" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgncG9zaXRpb25faWRfcG9zaXRpb25fc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
       <column name="positionname" sqlType="varchar" precision="100" scale="0" nullable="false" jdbcType="12"/>
-      <column name="salary" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="salary" sqlType="numeric" precision="131089" scale="0" nullable="false" jdbcType="2"/>
       <primary-key name="position_pkey" columns="id_position"/>
       <exported-key name="fk_employer__position" table="employer" schema="public" catalog="pharmacy" columns="id_position"/>
     </table>
@@ -1767,7 +1767,7 @@
     <table name="provider" schema="public" catalog="pharmacy" type="TABLE">
       <column name="id_provider" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgncHJvdmlkZXJfaWRfcHJvdmlkZXJfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
       <column name="providername" sqlType="varchar" precision="150" scale="0" nullable="false" jdbcType="12"/>
-      <column name="providerphone" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="providerphone" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="provider_pkey" columns="id_provider"/>
       <exported-key name="fk_branch_provider__provider" table="branch_provider" schema="public" catalog="pharmacy" columns="id_provider"/>
     </table>

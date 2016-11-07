@@ -7,40 +7,53 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script th:src="@{jquery.2.1.3.min.js}"></script>
     <script th:src="@{script.js}"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<div class="container">
-    <h3>Branch Providers List</h3>
-    <span style="float:left;"><form action="#" class="form-inline" role="form" th:action="@{/add_branchProvider}" method="post">
-        <input type="submit" class="btn btn-default" value="Add new branch provider">
-    </form></span>
-    <span style="float:left;">
-            <input id="edit" class="btn btn-default" value="Edit Branch-Provider">
-    </span>
-     <span style="float:left;">
-            <input id="delete" class="btn btn-default" value="Delete branch-provider">
-    </span>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><b>Choose</b></td>
-            <td><b>Branch Address</b></td>
-            <td><b>Provider Name</b></td>
-            <td><b>Day of Bilievery</b></td>
-        </tr>
-        </thead>
-            <tr th:each="bps:${bpds}">
-                <td><input type="checkbox"
-                           th:value="${bps.idBranch}+';'+${bps.idProvider}" th:checked="${false}" />
-                </td>
-                <td th:text="${bps.branch.address}"></td>
-                <td th:text="${bps.provider.providername}"></td>
-                <td th:text="${bps.dayOfBilevery}"></td>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_harold.jpg}"/> </div>
+        <h3 class="left_margin">Список дней поставки</h3>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-4">
+            <span class = "chatForm"><form action="#" class="form-inline" role="form" th:action="@{/add_branchProvider}" method="post">
+                <input type="submit" class="btn btn-primary widthButton" value="Добавить поставку">
+            </form></span>
+        </div>
+        <div class="col-md-4">
+            <span class = "chatForm">
+                    <input type="button" id="edit" class="btn btn-primary widthButton" value="Редактировать">
+            </span>
+        </div>
+        <div class="col-md-4">
+             <span class = "chatForm">
+                    <input type="button" id="delete" class="btn btn-primary widthButton" value="Удалить">
+            </span>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td><b>Выбрать</b></td>
+                <td><b>Адрес филиала</b></td>
+                <td><b>Компания-поставщик</b></td>
+                <td><b>День доставки</b></td>
             </tr>
-    </table>
-    <FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
-
-
+            </thead>
+                <tr th:each="bps:${bpds}">
+                    <td><input type="checkbox"
+                               th:value="${bps.idBranch}+';'+${bps.idProvider}" th:checked="${false}" />
+                    </td>
+                    <td th:text="${bps.branch.address}"></td>
+                    <td th:text="${bps.provider.providername}"></td>
+                    <td th:text="${bps.dayOfBilevery}"></td>
+                </tr>
+        </table>
+    </div>
+    <FORM action="#" class="form-inline left_margin" role="form" th:action="@{/index}" method="post"><INPUT Type="submit" class="btn btn-primary" VALUE="На главную"></FORM>
 </div>
 </body>
 </html>

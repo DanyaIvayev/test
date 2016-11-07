@@ -65,7 +65,9 @@ public class SaleDAOImpl implements SaleDAO {
         Query q = entityManager.createQuery("SELECT b FROM SalesEntity b WHERE b.idBranch = :id AND b.idMedicine = :idM");
         q.setParameter("id", branchId);
         q.setParameter("idM", medicineId);
-        SalesEntity sale = (SalesEntity)q.getSingleResult();
-        return sale;
+        List<SalesEntity> sales = q.getResultList();
+        if(sales.size()==0)
+            return null;
+        return sales.get(0);
     }
 }

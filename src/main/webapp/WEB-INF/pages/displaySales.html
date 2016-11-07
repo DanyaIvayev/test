@@ -2,48 +2,61 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Sales</title>
+    <title>Продажи/В наличии</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script th:src="@{jquery.2.1.3.min.js}"></script>
     <script th:src="@{script.js}"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<div class="container">
-    <h3>Sales List</h3>
-    <span style="float:left;"><form action="#" class="form-inline" role="form" th:action="@{/add_sale}" method="post">
-        <input type="submit" class="btn btn-default" value="Add new sale">
-    </form></span>
-    <span style="float:left;">
-            <input id="edit" class="btn btn-default" value="Edit Sale">
-    </span>
-     <span style="float:left;">
-            <input id="delete" class="btn btn-default" value="Delete sale">
-    </span>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><b>Choose</b></td>
-            <td><b>Branch Address</b></td>
-            <td><b>Medicine Name</b></td>
-            <td><b>In stock</b></td>
-            <td><b>Sold</b></td>
-        </tr>
-        </thead>
-            <tr th:each="sls:${sales}">
-                <td>
-                    <input type="checkbox"
-                           th:value="${sls.idBranch}+';'+${sls.idMedicine}" th:checked="${false}" />
-                </td>
-                <td th:text="${sls.branch.address}"></td>
-                <td th:text="${sls.medicine.medicinename}"></td>
-                <td th:text="${sls.instock}"></td>
-                <td th:text="${sls.sold}"></td>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_harold.jpg}"/> </div>
+        <h3 class="left_margin">Список продаж и наличия лекарств на складе</h3>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-4">
+            <span class = "chatForm"><form action="#" class="form-inline" role="form" th:action="@{/add_sale}" method="post">
+                <input type="submit" class="btn btn-primary widthButton" value="Добавить информацию">
+            </form></span>
+        </div>
+        <div class="col-md-4">
+            <span class = "chatForm">
+                    <input id="edit" type="button" class="btn btn-primary widthButton" value="Редактировать">
+            </span>
+        </div>
+        <div class="col-md-4">
+             <span class = "chatForm">
+                    <input id="delete" type="button" class="btn btn-primary widthButton" value="Удалить">
+             </span>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td><b>Выбрать</b></td>
+                <td><b>Адрес филиала</b></td>
+                <td><b>Название лекарства</b></td>
+                <td><b>Кол-во в наличии</b></td>
+                <td><b>Кол-во проданных</b></td>
             </tr>
-    </table>
-    <FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
-
-
+            </thead>
+                <tr th:each="sls:${sales}">
+                    <td>
+                        <input type="checkbox"
+                               th:value="${sls.idBranch}+';'+${sls.idMedicine}" th:checked="${false}" />
+                    </td>
+                    <td th:text="${sls.branch.address}"></td>
+                    <td th:text="${sls.medicine.medicinename}"></td>
+                    <td th:text="${sls.instock}"></td>
+                    <td th:text="${sls.sold}"></td>
+                </tr>
+        </table>
+    </div>
+    <FORM action="#" class="form-inline left_margin" role="form" th:action="@{/index}" method="post"><INPUT Type="submit" VALUE="На главную" class="btn btn-primary" ></FORM>
 </div>
 </body>
 </html>

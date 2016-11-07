@@ -2,29 +2,47 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Edit medicine</title>
+    <title>Редактирование лекарства</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/medicine_edit_save}" method="post">
-    <input type ="hidden" name="editMedicineId" th:value="${mdn.idMedicine}">
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_2.jpg}"/> </div>
+        <h3 class="left_margin">Редактирование лекарства</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline left_margin" action="#" role="form" enctype="multipart/form-data" th:action="@{/medicine_edit_save}" method="post">
+            <input type ="hidden" name="editMedicineId" th:value="${mdn.idMedicine}">
+            <table class="table">
+                <tr>
+                    <td><b>Название лекарства:</b></td>
+                    <td><input type="text" name="medicineName" size="70" th:value="${mdn.medicinename}" required placeholder="Введите название лекарства"></td>
+                </tr>
+                <tr>
+                    <td><b>Цена:</b></td>
+                    <td><input type="text" name="price" size="70" th:value="${mdn.price}" required placeholder="Введите цену (в формате ##.###)" pattern="\d+(\.\d{2})?"></td>
+                </tr>
+                <tr>
+                    <td><b>Страна производства:</b></td>
+                    <td><input type="text" name="country" size="70" th:value="${mdn.country}" required placeholder="Введите страну производства"></td>
+                </tr>
+                <tr>
+                    <td><b>Тип:</b></td>
+                    <td><select id="type" name="type" class="left_margin">
+                        <option th:each="type:${types}" th:value="${type.idType}" th:text="${type.typename}" th:selected="${type.idType==mdn.type.idType}"></option>
+                    </select></td>
+                </tr>
+            </table>
 
-    <p><b>Название лекарства:</b>
-        <input type="text" name="medicineName" size="70" th:value="${mdn.medicinename}">
-    </p>
-    <p><b>Цена:</b>
-        <input type="text" name="price" size="70" th:value="${mdn.price}">
-    </p>
-    <p><b>Страна производства:</b>
-        <input type="text" name="country" size="70" th:value="${mdn.country}">
-    </p>
+            <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+           <INPUT Type="button" VALUE="Назад" class="btn btn-default left_margin add-button-width" onClick="history.go(-1);return true;">
 
-    <p><b>Тип:</b>
-        <select id="type" name="type">
-            <option th:each="type:${types}" th:value="${type.idType}" th:text="${type.typename}" th:selected="${type.idType==mdn.type.idType}"></option>
-        </select>
-    </p>
-    <input type="submit" class="btn btn-primary" value="Save">
-</form>
-<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+        </form>
+    </div>
+</div>
 </body>
 </html>

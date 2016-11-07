@@ -1,19 +1,36 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Edit branch</title>
+    <title>Редактирование информации о филиале</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-
-<form action="#" th:action="@{/save_branch}" method="post">
-    <input type ="hidden" name="editId" th:value="${brn.idBranch}">
-    <p><b>Адрес филиала:</b>
-        <input type="text" name="branchName" size="70" th:value="${brn.address}">
-    </p>
-    <p><b>Телефон</b>
-        <input type="text" name="phone" size="70" th:value="${brn.phone}">
-    </p>
-    <input type="submit" class="btn btn-primary" value="Save">
-</form>
-<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_2.jpg}"/> </div>
+        <h3 class="left_margin">Редактирование информации о филиале</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline left_margin" action="#" th:action="@{/save_branch}" method="post">
+            <input type ="hidden" name="editId" th:value="${brn.idBranch}">
+            <table class="table">
+                <tr>
+                    <td><b>Адрес филиала: </b></td>
+                    <td>
+                        <input type="text" name="branchName" size="70" th:value="${brn.address}" required placeholder="Введите адрес филиала">
+                    </td>
+                <tr>
+                    <td><b>Телефон: </b></td>
+                    <td><input type="text" name="phone" size="70" th:value="${brn.phone}" required placeholder="Введите номер телефона" pattern="[0-9]{6,11}">
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+            <INPUT Type="button" VALUE="Назад" class="btn btn-default left_margin add-button-width" onClick="history.go(-1);return true;">
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -2,16 +2,32 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Add new type</title>
-</head>
-<body>
-<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/type_save}" method="post">
-    <p><b>Вид лекарства:</b>
-        <input type="text" name="typeName" size="70" placeholder="Введите вид лекарства">
-    </p>
+    <title>Добавление нового вида</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 
-    <input type="submit" class="btn btn-primary" value="Add">
-</form>
-<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+</head>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_2.jpg}"/> </div>
+        <h3 class="left_margin">Добавление нового вида лекарства</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline left_margin" action="#" role="form" enctype="multipart/form-data" th:action="@{/type_save}" method="post">
+            <table class="table">
+                <tr>
+                    <td><b>Вид лекарства:</b></td>
+                    <td><input type="text" name="typeName" size="70" placeholder="Введите вид лекарства" required></td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+            <INPUT Type="button" VALUE="Назад" class="btn btn-default left_margin add-button-width" onClick="history.go(-1);return true;">
+
+        </form>
+    </div>
+</div>
 </body>
 </html>

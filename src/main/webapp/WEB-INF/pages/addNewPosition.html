@@ -2,17 +2,34 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Add new position</title>
+    <title>Добавление должности</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<form action="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/position_save}" method="post">
-    <p><b>Название должности:</b>
-        <input type="text" name="positionName" size="70" placeholder="Введите название должности">
-    </p>
-    <p><b>Оклад:</b>
-        <input type="text" name="salary" size="70" placeholder="Введите размер оклада">
-    </p>
-    <input type="submit" class="btn btn-primary" value="Add">
-</form>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_2.jpg}"/> </div>
+        <h3 class="left_margin">Добавление должности</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline left_margin" action="#" role="form" enctype="multipart/form-data" th:action="@{/position_save}" method="post">
+            <table class="table">
+                <tr>
+                    <td><b>Название должности:</b></td>
+                    <td><input type="text" name="positionName" size="70" placeholder="Введите название должности" required></td>
+                </tr>
+                <tr>
+                    <td><b>Оклад:</b></td>
+                    <td><input type="text" name="salary" size="70" placeholder="Введите размер оклада (формат ##.##)" required pattern="\d+(\.\d{0,2})?"></td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+            <INPUT Type="button" VALUE="Назад" class="btn btn-default left_margin add-button-width" onClick="history.go(-1);return true;">
+        </form>
+    </div>
+</div>
 </body>
 </html>

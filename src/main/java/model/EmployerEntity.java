@@ -12,7 +12,7 @@ public class EmployerEntity {
     private String firstname;
     private String secondname;
     private String patronymic;
-    private int inn;
+    private Long inn;
     private int serialofpassport;
     private int numberofpassport;
 
@@ -22,7 +22,7 @@ public class EmployerEntity {
     public EmployerEntity() {
     }
 
-    public EmployerEntity(String firstname, String secondname, String patronymic, int inn, int serialofpassport, int numberofpassport, BranchEntity branch, PositionEntity position) {
+    public EmployerEntity(String firstname, String secondname, String patronymic, Long inn, int serialofpassport, int numberofpassport, BranchEntity branch, PositionEntity position) {
         this.firstname = firstname;
         this.secondname = secondname;
         this.patronymic = patronymic;
@@ -33,7 +33,7 @@ public class EmployerEntity {
         this.position = position;
     }
 
-    public EmployerEntity(int idEmployer, String firstname, String secondname, String patronymic, int inn, int serialofpassport, int numberofpassport, BranchEntity branch, PositionEntity position) {
+    public EmployerEntity(int idEmployer, String firstname, String secondname, String patronymic, Long inn, int serialofpassport, int numberofpassport, BranchEntity branch, PositionEntity position) {
         this.idEmployer = idEmployer;
         this.firstname = firstname;
         this.secondname = secondname;
@@ -108,11 +108,11 @@ public class EmployerEntity {
 
     @Basic
     @Column(name = "inn")
-    public int getInn() {
+    public Long getInn() {
         return inn;
     }
 
-    public void setInn(int inn) {
+    public void setInn(Long inn) {
         this.inn = inn;
     }
 
@@ -160,7 +160,7 @@ public class EmployerEntity {
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (secondname != null ? secondname.hashCode() : 0);
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
-        result = 31 * result + inn;
+        result = 31 * result + inn.hashCode();
         result = 31 * result + serialofpassport;
         result = 31 * result + numberofpassport;
         return result;

@@ -1,19 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Add new provider</title>
+    <title>Добавление поставщика</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<form role="form" enctype="multipart/form-data" class="form-horizontal" action="provider_save" method="post">
-    <p><b>Название компании-поставщика:</b>
-        <input type="text" name="providerName" size="70" placeholder="Введите название">
-    </p>
-    <p><b>Телефон поставщика:</b>
-        <input type="text" name="providerPhone" size="70" placeholder="Введите номер телефона">
-    </p>
-    <input type="submit" class="btn btn-primary" value="Add">
-</form>
-<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_2.jpg}"/> </div>
+        <h3 class="left_margin">Добавление поставщика</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline left_margin" role="form" enctype="multipart/form-data" action="provider_save" method="post">
+            <table class="table">
+                <tr>
+                    <td><p><b>Название компании-поставщика:</b></td>
+                    <td><input type="text" name="providerName" size="70" placeholder="Введите название" required></td>
+                </tr>
+                <tr>
+                    <td><b>Телефон поставщика:</b></td>
+                    <td><input type="text" name="providerPhone" size="70" placeholder="Введите номер телефона (от 6 до 11 цифр)" required pattern="[0-9]{6,11}"></td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+            <INPUT Type="button" VALUE="Назад" class="btn btn-default left_margin add-button-width" onClick="history.go(-1);return true;">
+        </form>
+    </div>
+</div>
 </body>
 </html>

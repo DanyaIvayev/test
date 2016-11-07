@@ -2,31 +2,44 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Sale</title>
+    <title>Редактировать информацию</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-<form action ="#" role="form" enctype="multipart/form-data" class="form-horizontal" th:action="@{/sale_edit_save}" method="post">
-    <input type ="hidden" name="editBranchId" th:value="${sls.idBranch}">
-    <input type ="hidden" name="editMedicineId" th:value="${sls.idMedicine}">
-    <p th:text="'Адрес филиала: '+${brn.address}"><b>Адрес филиала:</b>
-        <!--<select id="branchAddress" name="branchAddress">-->
-            <!--<option th:each="brn:${brns}" th:value="${brn.idBranch}" th:text="${brn.address}" th:selected="${brn.idBranch==sls.idBranch}"></option>-->
-        <!--</select>-->
-    </p>
-    <p th:text="'Лекарство: '+${mdn.medicinename}"> <b>Лекарство:</b>
-        <!--<select id="medicineName" name="medicineName">-->
-            <!--<option th:each="mdn:${mdns}" th:value="${mdn.idMedicine}" th:text="${mdn.medicinename}" th:selected="${mdn.idMedicine==sls.idMedicine}"></option>-->
-        <!--</select>-->
-    </p>
-    <p><b>Количество лекарств на складе:</b>
-        <input type="text" name="inStock" size="70" th:value="${sls.instock}">
-    </p>
-    <p><b>Количество проданных:</b>
-        <input type="text" name="sold" size="70" th:value="${sls.sold}">
-    </p>
-
-    <input type="submit" class="btn btn-primary" value="Save">
-</form>
-<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+<body class="other_back">
+<div class="container top-buffer">
+    <div class="row">
+        <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                th:src="@{/header_2.jpg}"/> </div>
+        <h3 class="left_margin">Редактирование информации о продажах</h3>
+    </div>
+    <div class="row">
+        <form class="form-inline left_margin" action ="#" role="form" enctype="multipart/form-data" th:action="@{/sale_edit_save}" method="post">
+            <input type ="hidden" name="editBranchId" th:value="${sls.idBranch}">
+            <input type ="hidden" name="editMedicineId" th:value="${sls.idMedicine}">
+            <table class="table">
+                <tr>
+                    <td><b>Адрес филиала:</b></td>
+                    <td th:text="${brn.address}"></td>
+                </tr>
+                <tr>
+                    <td><b>Лекарство:</b></td>
+                    <td th:text="${mdn.medicinename}"> </td>
+                </tr>
+                <tr>
+                    <td><b>Количество лекарств на складе:</b></td>
+                    <td><input type="text" name="inStock" size="70" th:value="${sls.instock}" placeholder="Введите кол-во в наличии" required pattern="[0-9]{,6}"></td>
+                </tr>
+                <tr>
+                    <td><b>Количество проданных:</b></td>
+                    <td><input type="text" name="sold" size="70" th:value="${sls.sold}" placeholder="Введите кол-во проданных" required pattern="[0-9]{,6}"></td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+            <INPUT Type="button" VALUE="Назад" class="btn btn-default left_margin add-button-width" onClick="history.go(-1);return true;">
+        </form>
+    </div>
+</div>
 </body>
 </html>

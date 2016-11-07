@@ -1,18 +1,35 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Add new branch</title>
+    <title>Добавление нового филиала</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" th:href="@{main.css}">
 </head>
-<body>
-
-<form action="#" th:action="@{/add_save}" method="post">
-    <p><b>Адрес филиала:</b>
-        <input type="text" name="branchName" size="70" placeholder="Введите адрес филиала">
-    </p>
-    <p><b>Телефон</b>
-        <input type="text" name="phone" size="70" placeholder="Введите номер телефона">
-    </p>
-    <input type="submit" class="btn btn-primary" value="Add">
-</form>
-<FORM><INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
+<body class="other_back">
+    <div class="container top-buffer">
+        <div class="row">
+            <div class="col-md-12 head-block" ><img class = "img-header" src="/header_harold.jpg"
+                                                    th:src="@{/header_2.jpg}"/> </div>
+            <h3 class="left_margin">Добавление нового филиала</h3>
+        </div>
+        <div class="row">
+            <form class="form-inline left_margin" action="#" th:action="@{/add_save}" method="post">
+                <table class="table">
+                    <tr>
+                        <td><b>Адрес филиала: </b></td>
+                        <td><input type="text" name="branchName" size="70" required placeholder="Введите адрес филиала">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Телефон: </b></td>
+                        <td><input type="text" name="phone" size="70" required placeholder="Введите номер телефона" pattern="[0-9]{6,11}">
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" class="btn btn-primary left_margin add-button-width" value="Сохранить">
+                <INPUT Type="button" class="btn btn-default left_margin add-button-width" VALUE="Назад" onClick="history.go(-1);return true;">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

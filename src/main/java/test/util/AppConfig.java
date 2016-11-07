@@ -33,7 +33,7 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
             registry.addResourceHandler("/**").addResourceLocations(
-                    "classpath:/static/");
+                    "classpath:/static/", "classpath:/css/", "classpath:/images/");
 
     }
     @Bean
@@ -61,16 +61,6 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
     @Bean TypeDAO typeDAO(){ return new TypeDAOImpl();}
 
-    /*@Bean
-    public UrlBasedViewResolver setupViewResolver() {
-        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-        resolver.setPrefix("/WEB-INF/pages/");
-        resolver.setSuffix(".jsp");
-        resolver.setViewClass(JstlView.class);
-        resolver.setOrder(1);
-        return resolver;
-    }
-*/
     @Bean
     public ViewResolver viewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();

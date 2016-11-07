@@ -10,17 +10,17 @@ import javax.persistence.*;
 public class ProviderEntity {
     private int idProvider;
     private String providername;
-    private int providerphone;
+    private Long providerphone;
 
     public ProviderEntity() {
     }
 
-    public ProviderEntity(String providername, int providerphone) {
+    public ProviderEntity(String providername, Long providerphone) {
         this.providername = providername;
         this.providerphone = providerphone;
     }
 
-    public ProviderEntity(int idProvider, String providername, int providerphone) {
+    public ProviderEntity(int idProvider, String providername, Long providerphone) {
         this.idProvider = idProvider;
         this.providername = providername;
         this.providerphone = providerphone;
@@ -49,11 +49,11 @@ public class ProviderEntity {
 
     @Basic
     @Column(name = "providerphone")
-    public int getProviderphone() {
+    public Long getProviderphone() {
         return providerphone;
     }
 
-    public void setProviderphone(int providerphone) {
+    public void setProviderphone(Long providerphone) {
         this.providerphone = providerphone;
     }
 /*
